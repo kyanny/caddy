@@ -246,6 +246,10 @@ else
       end
 
       if ok
+        # git friendliness
+        git = "git add #{filename} && git commit #{filename} -m '#{File.basename(filename)} #{code_size}'"
+        out = `#{git}`
+        puts out unless out.match(/^#/)
         break
       end
 
